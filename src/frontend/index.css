@@ -1,0 +1,304 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Fraunces (display) ─────────────────────────────────────── */
+@font-face {
+  font-family: "Fraunces";
+  src: url("/assets/fonts/Fraunces.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ── Cabinet Grotesk (body) ─────────────────────────────────── */
+@font-face {
+  font-family: "Cabinet Grotesk";
+  src: url("/assets/fonts/CabinetGrotesk.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ── Sora (ui/labels) ───────────────────────────────────────── */
+@font-face {
+  font-family: "Sora";
+  src: url("/assets/fonts/Sora.woff2") format("woff2");
+  font-weight: 100 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+
+    /* Navy-gold leadership palette */
+    --background: 0.97 0.005 250;
+    --foreground: 0.12 0.025 250;
+    --card: 1 0 0;
+    --card-foreground: 0.12 0.025 250;
+    --popover: 1 0 0;
+    --popover-foreground: 0.12 0.025 250;
+
+    /* Primary = deep navy */
+    --primary: 0.18 0.065 250;
+    --primary-foreground: 0.97 0.005 80;
+
+    /* Secondary = warm gold */
+    --secondary: 0.72 0.14 80;
+    --secondary-foreground: 0.12 0.025 250;
+
+    --muted: 0.93 0.01 250;
+    --muted-foreground: 0.45 0.025 250;
+
+    /* Accent = burnished gold */
+    --accent: 0.75 0.15 78;
+    --accent-foreground: 0.12 0.025 250;
+
+    --destructive: 0.577 0.245 27.325;
+    --destructive-foreground: 0.985 0 0;
+
+    --border: 0.88 0.01 250;
+    --input: 0.88 0.01 250;
+    --ring: 0.72 0.14 80;
+
+    /* Brand tokens */
+    --navy: 0.15 0.07 252;
+    --navy-mid: 0.20 0.06 252;
+    --navy-light: 0.28 0.055 252;
+    --gold: 0.75 0.145 78;
+    --gold-light: 0.85 0.10 80;
+    --gold-pale: 0.93 0.06 82;
+    --white: 1 0 0;
+    /* Fix 2: Richer parchment — not plain white */
+    --cream: 0.935 0.012 88;
+
+    --chart-1: 0.646 0.222 41.116;
+    --chart-2: 0.6 0.118 184.704;
+    --chart-3: 0.398 0.07 227.392;
+    --chart-4: 0.828 0.189 84.429;
+    --chart-5: 0.769 0.188 70.08;
+
+    --sidebar: 0.985 0 0;
+    --sidebar-foreground: 0.145 0 0;
+    --sidebar-primary: 0.205 0 0;
+    --sidebar-primary-foreground: 0.985 0 0;
+    --sidebar-accent: 0.97 0 0;
+    --sidebar-accent-foreground: 0.205 0 0;
+    --sidebar-border: 0.922 0 0;
+    --sidebar-ring: 0.708 0 0;
+  }
+
+  .dark {
+    --background: 0.12 0.04 252;
+    --foreground: 0.96 0.005 80;
+    --card: 0.16 0.05 252;
+    --card-foreground: 0.96 0.005 80;
+    --popover: 0.18 0.05 252;
+    --popover-foreground: 0.96 0.005 80;
+    --primary: 0.75 0.145 78;
+    --primary-foreground: 0.12 0.04 252;
+    --secondary: 0.22 0.06 252;
+    --secondary-foreground: 0.96 0.005 80;
+    --muted: 0.20 0.045 252;
+    --muted-foreground: 0.62 0.025 252;
+    --accent: 0.75 0.145 78;
+    --accent-foreground: 0.12 0.04 252;
+    --destructive: 0.704 0.191 22.216;
+    --destructive-foreground: 0.985 0 0;
+    --border: 0.26 0.04 252;
+    --input: 0.26 0.04 252;
+    --ring: 0.75 0.145 78;
+
+    --navy: 0.12 0.04 252;
+    --navy-mid: 0.16 0.05 252;
+    --navy-light: 0.22 0.055 252;
+    --gold: 0.78 0.145 78;
+    --gold-light: 0.88 0.10 80;
+    --gold-pale: 0.93 0.06 82;
+    --white: 1 0 0;
+    --cream: 0.97 0.008 85;
+
+    --sidebar: 0.205 0 0;
+    --sidebar-foreground: 0.985 0 0;
+    --sidebar-primary: 0.488 0.243 264.376;
+    --sidebar-primary-foreground: 0.985 0 0;
+    --sidebar-accent: 0.269 0 0;
+    --sidebar-accent-foreground: 0.985 0 0;
+    --sidebar-border: 1 0 0 / 10%;
+    --sidebar-ring: 0.439 0 0;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Cabinet Grotesk", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+/* ── Utility classes ────────────────────────────────────────── */
+@layer utilities {
+  .text-gold {
+    color: oklch(var(--gold));
+  }
+
+  .text-navy {
+    color: oklch(var(--navy));
+  }
+
+  .bg-navy {
+    background-color: oklch(var(--navy));
+  }
+
+  .bg-navy-mid {
+    background-color: oklch(var(--navy-mid));
+  }
+
+  .bg-navy-light {
+    background-color: oklch(var(--navy-light));
+  }
+
+  .bg-gold {
+    background-color: oklch(var(--gold));
+  }
+
+  .bg-gold-light {
+    background-color: oklch(var(--gold-light));
+  }
+
+  .bg-cream {
+    background-color: oklch(var(--cream));
+  }
+
+  .border-gold {
+    border-color: oklch(var(--gold));
+  }
+
+  .border-navy {
+    border-color: oklch(var(--navy));
+  }
+
+  .font-display {
+    font-family: "Fraunces", Georgia, serif;
+  }
+
+  .font-ui {
+    font-family: "Sora", system-ui, sans-serif;
+  }
+
+  .gold-gradient {
+    background: linear-gradient(
+      135deg,
+      oklch(var(--gold)) 0%,
+      oklch(var(--gold-light)) 100%
+    );
+  }
+
+  .navy-gradient {
+    background: linear-gradient(
+      180deg,
+      oklch(var(--navy)) 0%,
+      oklch(var(--navy-mid)) 100%
+    );
+  }
+
+  .text-gradient-gold {
+    background: linear-gradient(
+      135deg,
+      oklch(var(--gold)) 0%,
+      oklch(var(--gold-light)) 60%,
+      oklch(0.9 0.08 85) 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .card-hover {
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 60px -10px oklch(var(--navy) / 0.25),
+      0 0 0 1px oklch(var(--gold) / 0.2);
+  }
+
+  .gold-line::after {
+    content: "";
+    display: block;
+    width: 4rem;
+    height: 3px;
+    background: linear-gradient(90deg, oklch(var(--gold)), transparent);
+    margin-top: 0.75rem;
+    border-radius: 2px;
+  }
+
+  .section-label {
+    font-family: "Sora", system-ui, sans-serif;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: oklch(var(--gold));
+  }
+
+  /* Fix 2: Atmospheric depth layer for light sections */
+  .section-light {
+    background-color: oklch(var(--cream));
+    position: relative;
+  }
+
+  .section-light::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(
+        ellipse 120% 60% at 100% 0%,
+        oklch(var(--navy) / 0.04) 0%,
+        transparent 60%
+      ),
+      radial-gradient(
+        ellipse 80% 50% at 0% 100%,
+        oklch(var(--gold) / 0.03) 0%,
+        transparent 55%
+      );
+  }
+
+  /* Fix 2: SVG noise texture overlay for light sections */
+  .section-light::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.025;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 200px 200px;
+  }
+
+  /* Fix 1: Hero title credentials bar */
+  .hero-credential {
+    font-family: "Sora", system-ui, sans-serif;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    color: oklch(var(--gold-light) / 0.7);
+  }
+
+  .hero-credential-separator {
+    color: oklch(var(--gold) / 0.35);
+    margin: 0 0.6rem;
+  }
+}
